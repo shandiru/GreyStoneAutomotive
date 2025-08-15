@@ -9,10 +9,10 @@ function App() {
     <>
       <Header />
       <Hero />
-      <Services />
+      {/* <Services />
       <About />
       <Contact />
-      <Footer />
+      <Footer /> */}
       {/* Add other components like Contact, Footer, etc. as needed */}
     </>
 
