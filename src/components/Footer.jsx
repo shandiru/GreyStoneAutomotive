@@ -20,18 +20,39 @@ export default function Footer() {
                             experience. We're committed to keeping your vehicle safe, reliable,
                             and running smoothly.
                         </p>
+
                         <div className="space-y-2 text-sm">
                             <div className="flex items-center gap-2">
-                                <Phone className="h-4 w-4" />
-                                <span>01234 567890</span>
+                                <Phone className="h-4 w-4" aria-hidden="true" />
+                                <a
+                                    href="tel:01234567890"
+                                    className="text-white/90 hover:underline underline-offset-4"
+                                    aria-label="Call 01234 567890"
+                                >
+                                    01234 567890
+                                </a>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Mail className="h-4 w-4" />
-                                <span>info@greystoneautomotive.co.uk</span>
+                                <Mail className="h-4 w-4" aria-hidden="true" />
+                                <a
+                                    href="mailto:info@greystoneautomotive.co.uk"
+                                    className="text-white/90 hover:underline underline-offset-4 break-all"
+                                    aria-label="Email info@greystoneautomotive.co.uk"
+                                >
+                                    info@greystoneautomotive.co.uk
+                                </a>
                             </div>
                             <div className="flex items-center gap-2">
-                                <MapPin className="h-4 w-4" />
-                                <span>123 High Street, Anytown, AN1 2BC</span>
+                                <MapPin className="h-4 w-4" aria-hidden="true" />
+                                <a
+                                    href="https://www.google.com/maps/search/?api=1&query=123+High+Street,+Anytown,+AN1+2BC"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-white/90 hover:underline underline-offset-4"
+                                    aria-label="Open address in Google Maps"
+                                >
+                                    123 High Street, Anytown, AN1 2BC
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -40,14 +61,14 @@ export default function Footer() {
                     <div>
                         <h4 className="font-serif font-semibold text-lg mb-4">Our Services</h4>
                         <ul className="space-y-2 text-sm text-white/80">
-                            <li>MOT Testing</li>
-                            <li>Car Servicing</li>
-                            <li>Brake Repairs</li>
-                            <li>Clutch Replacement</li>
-                            <li>Air Conditioning</li>
-                            <li>Diagnostics</li>
-                            <li>Suspension Work</li>
-                            <li>Mechanical Repairs</li>
+                            <li><a href="#services" className="hover:opacity-90">MOT Testing</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Car Servicing</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Brake Repairs</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Clutch Replacement</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Air Conditioning</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Diagnostics</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Suspension Work</a></li>
+                            <li><a href="#services" className="hover:opacity-90">Mechanical Repairs</a></li>
                         </ul>
                     </div>
 
@@ -55,23 +76,14 @@ export default function Footer() {
                     <div>
                         <h4 className="font-serif font-semibold text-lg mb-4">Opening Hours</h4>
                         <div className="space-y-2 text-sm text-white/80">
-                            <div className="flex justify-between">
-                                <span>Mon - Fri:</span>
-                                <span>8AM - 6PM</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span>Saturday:</span>
-                                <span>8AM - 4PM</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span>Sunday:</span>
-                                <span>Closed</span>
-                            </div>
+                            <div className="flex justify-between"><span>Mon - Fri:</span><span>8AM - 6PM</span></div>
+                            <div className="flex justify-between"><span>Saturday:</span><span>8AM - 4PM</span></div>
+                            <div className="flex justify-between"><span>Sunday:</span><span>Closed</span></div>
                         </div>
 
                         <div className="mt-4 p-3 bg-white/10 rounded">
                             <div className="flex items-center gap-2 text-sm">
-                                <Clock className="h-4 w-4" />
+                                <Clock className="h-4 w-4" aria-hidden="true" />
                                 <span>Emergency callouts available</span>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import React from "react";
 import { Wrench, Shield, Clock } from "lucide-react";
 
 export default function Hero() {
-    // brand green tuned to the screenshot
     const brandGreen = "#0B6B38";
 
     return (
@@ -28,25 +27,31 @@ export default function Hero() {
                         over 20 years of experience. Your vehicle deserves the best care.
                     </p>
 
+                    {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                        <button
+                        <a
+                            href="#contact"
                             className="inline-flex items-center justify-center gap-2 font-medium text-white shadow-xs h-12 rounded-md text-lg px-8 py-3 transition-colors"
                             style={{ backgroundColor: brandGreen }}
                         >
                             Book Your Service
-                        </button>
+                        </a>
 
-                        <button className="inline-flex items-center justify-center gap-2 font-medium border shadow-xs hover:bg-gray-50 h-12 rounded-md text-lg px-8 py-3 bg-transparent text-gray-800">
+                        <a
+                            href="#contact"
+                            className="inline-flex items-center justify-center gap-2 font-medium border shadow-xs hover:bg-gray-50 h-12 rounded-md text-lg px-8 py-3 bg-transparent text-gray-800"
+                        >
                             Get Quote
-                        </button>
+                        </a>
                     </div>
 
+                    {/* Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
                         {/* Card 1 */}
                         <div className="flex flex-col items-center text-center">
                             <div
                                 className="p-4 rounded-full mb-4"
-                                style={{ backgroundColor: `${brandGreen}1A` }} // ~10% tint
+                                style={{ backgroundColor: `${brandGreen}1A` }}
                             >
                                 <Wrench className="h-8 w-8" style={{ color: brandGreen }} />
                             </div>
