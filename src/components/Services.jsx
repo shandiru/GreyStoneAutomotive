@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
     Car,
     Cog,
@@ -66,6 +66,13 @@ export default function Services() {
         },
     ];
 
+    // Show only 4 initially
+    const [visibleCount, setVisibleCount] = useState(4);
+
+    const showMore = () => {
+        setVisibleCount(services.length);
+    };
+
     return (
         <section id="services" className="py-20 bg-white">
             <div className="container mx-auto px-4">
@@ -83,7 +90,7 @@ export default function Services() {
 
                 {/* Service Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {services.map((service, index) => (
+                    {services.slice(0, visibleCount).map((service, index) => (
                         <div
                             key={index}
                             className="bg-white flex flex-col gap-6 rounded-xl border py-6 shadow-sm hover:shadow-lg transition-shadow duration-300"
@@ -120,15 +127,19 @@ export default function Services() {
                     ))}
                 </div>
 
-                {/* View All Button */}
-                <div className="text-center mt-12">
-                    <button
-                        className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white h-10 rounded-md px-6 transition-colors"
-                        style={{ backgroundColor: brandGreen }}
-                    >
-                        View All Services
-                    </button>
-                </div>
+                {/* Show More Button */}
+                {visibleCount < services.length && (
+                    <div className="text-center mt-12">
+                        <button
+                            type="button"
+                            onClick={showMore}
+                            className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white h-10 rounded-md px-6 transition-colors"
+                            style={{ backgroundColor: brandGreen }}
+                        >
+                            View All Services
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
