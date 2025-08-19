@@ -10,19 +10,42 @@ export default function Contact() {
         {
             icon: <Phone className="h-5 w-5" style={{ color: brandGreen }} />,
             title: "Phone",
-            value: "01234 567890",
+            value: (
+                <a
+                    href="tel:01234567890"
+                    className="text-green-700 hover:underline"
+                >
+                    01234 567890
+                </a>
+            ),
             note: "Call us for immediate assistance",
         },
         {
             icon: <Mail className="h-5 w-5" style={{ color: brandGreen }} />,
             title: "Email",
-            value: "info@greystoneautomotive.co.uk",
+            value: (
+                <a
+                    href="mailto:info@greystoneautomotive.co.uk"
+                    className="text-green-700 hover:underline"
+                >
+                    info@greystoneautomotive.co.uk
+                </a>
+            ),
             note: "Send us your questions anytime",
         },
         {
             icon: <MapPin className="h-5 w-5" style={{ color: brandGreen }} />,
             title: "Address",
-            value: "123 High Street, Anytown, AN1 2BC",
+            value: (
+                <a
+                    href="https://www.google.com/maps?q=123+High+Street,+Anytown,+AN1+2BC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-700 hover:underline"
+                >
+                    123 High Street, Anytown, AN1 2BC
+                </a>
+            ),
             note: "Easy parking available",
         },
         {
