@@ -3,27 +3,73 @@ import { useEffect, useState } from 'react';
 
 const TESTIMONIALS = [
   {
-    quote:
-      "I can't say enough good things. The selection is impressive, the staff is friendly, and the whole experience is hassle-free. I felt like a VIP. This is my go-to choice!",
-    name: 'DAVID MARK',
-    role: 'CEO Mark Ltd.',
-    avatar: '/images/avatars/david.jpg',
+    quote: "Incredible service. Honest and friendly team. I’ve recommended Greystone to everyone I know.",
+    name: "ALEX T.",
+    role: "Builder",
+    avatar: "/images/avatars/alex.jpg",
     stars: 5,
   },
   {
-    quote:
-      'Professional, punctual, and transparent pricing. The delivery and handover were smooth. Highly recommended for anyone who values quality and service.',
-    name: 'SARAH K.',
-    role: 'Project Director',
-    avatar: '/images/avatars/sarah.jpg',
+    quote: "Top-tier customer care. Explained everything clearly and got the job done on time.",
+    name: "JULIE W.",
+    role: "Consultant",
+    avatar: "/images/avatars/julie.jpg",
     stars: 5,
   },
   {
-    quote:
-      'From enquiry to completion, everything was clear and well-managed. Communication was excellent and the team went the extra mile.',
-    name: 'IMRAN F.',
-    role: 'Operations Manager',
-    avatar: '/images/avatars/imran.jpg',
+    quote: "They fixed a long-standing engine issue that no one else could. Can’t thank them enough.",
+    name: "MOHAMMED Z.",
+    role: "Fleet Owner",
+    avatar: "/images/avatars/mohammed.jpg",
+    stars: 5,
+  },
+  {
+    quote: "Professional, well-priced and efficient. What more could you ask for?",
+    name: "CLAIRE R.",
+    role: "Photographer",
+    avatar: "/images/avatars/claire.jpg",
+    stars: 5,
+  },
+  {
+    quote: "Genuine people who care about quality workmanship. Always my first choice for MOTs.",
+    name: "BEN S.",
+    role: "Delivery Driver",
+    avatar: "/images/avatars/ben.jpg",
+    stars: 5,
+  },
+  {
+    quote: "I brought in my BMW and left with a smile. No pushy upsells—just good work.",
+    name: "SOPHIE L.",
+    role: "Marketing Exec",
+    avatar: "/images/avatars/sophie.jpg",
+    stars: 5,
+  },
+  {
+    quote: "They stayed late to finish the job. I couldn’t believe that kind of service still exists.",
+    name: "PETER D.",
+    role: "Teacher",
+    avatar: "/images/avatars/peter.jpg",
+    stars: 5,
+  },
+  {
+    quote: "Greystone saved me from a breakdown before a big family trip. Absolute legends.",
+    name: "KATIE H.",
+    role: "Parent",
+    avatar: "/images/avatars/katie.jpg",
+    stars: 5,
+  },
+  {
+    quote: "Quick, friendly, and thorough. Wouldn’t trust anyone else with my van.",
+    name: "LIAM F.",
+    role: "Tradie",
+    avatar: "/images/avatars/liam.jpg",
+    stars: 5,
+  },
+  {
+    quote: "Booking was easy, the staff were professional, and the results exceeded expectations.",
+    name: "EMILY R.",
+    role: "Nurse",
+    avatar: "/images/avatars/emily.jpg",
     stars: 5,
   },
 ];
@@ -64,26 +110,22 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Heading */}
         <h2
           className="text-center text-2xl font-extrabold tracking-[0.2em] sm:text-4xl uppercase mb-10"
-          style={{ color: colors.black }}
+          style={{ color: colors.black, fontFamily: "'Times New Roman', serif" }}
         >
           What Customers Say
           <br />
           About <span style={{ color: colors.orange }}>{brand}</span>
         </h2>
 
-        {/* Testimonial Card */}
         <div
           className="relative mx-auto w-full max-w-4xl rounded-xl px-6 py-16 md:py-20 text-center text-white shadow-xl sm:px-10 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex items-center"
-          style={{ backgroundColor: colors.orange }}
+          style={{ backgroundColor: colors.orange, fontFamily: "'Times New Roman', serif" }}
         >
           <p className="mx-auto max-w-3xl text-lg md:text-xl leading-relaxed text-white">
             “{t.quote}”
           </p>
-
-          {/* Avatar */}
           <div className="pointer-events-none absolute left-1/2 top-full -mt-12 md:-mt-14 -translate-x-1/2">
             <img
               src={t.avatar}
@@ -93,8 +135,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
           </div>
         </div>
 
-        {/* Stars, Name, Role */}
-        <div className="mt-14 flex flex-col items-center">
+        <div className="mt-14 flex flex-col items-center" style={{ fontFamily: "'Times New Roman', serif" }}>
           <div className="mb-3 flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} filled={i < t.stars} />
@@ -108,7 +149,6 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
           </div>
         </div>
 
-        {/* Dots */}
         <div className="mt-6 flex items-center justify-center gap-2">
           {TESTIMONIALS.map((_, i) => (
             <button
@@ -120,6 +160,18 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
               }`}
             />
           ))}
+        </div>
+
+        {/* CTA to Google Reviews */}
+        <div className="mt-10 text-center" style={{ fontFamily: "'Times New Roman', serif" }}>
+          <a
+            href="https://www.google.com/search?q=Greystone+Automotive+Engineers+Ltd+Sheffield&hl=en&gl=uk#lrd=0x48798242aa57d70d:0x3f1d5e92d4d83e13,1,,,,"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#E1912F] hover:bg-black transition text-white font-semibold py-3 px-6 rounded-lg mt-4"
+          >
+            ⭐ Leave Us a Review on Google
+          </a>
         </div>
       </div>
 

@@ -13,8 +13,8 @@ export default function Contact() {
             icon: <Phone className="h-5 w-5" style={{ color: brandOrange }} />,
             title: "Phone",
             value: (
-                <a href="tel:01234567890" className="hover:underline" style={{ color: brandOrange }}>
-                    01234 567890
+                <a href="tel:01142587911" className="hover:underline" style={{ color: brandOrange }}>
+                    +44 7545 213989
                 </a>
             ),
             note: "Call us for immediate assistance",
@@ -34,24 +34,24 @@ export default function Contact() {
             title: "Address",
             value: (
                 <a
-                    href="https://www.google.com/maps?q=123+High+Street,+Anytown,+AN1+2BC"
+                    href="https://www.google.com/maps/place/Greystone+Automotive+Engineers+Ltd,+3+Bryta+Works,+Little+London+Rd,+Woodseats,+Sheffield+S8+0UJ,+UK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
                     style={{ color: brandOrange }}
                 >
-                    123 High Street, Anytown, AN1 2BC
+                    3 Bryta Works, Little London Rd, Sheffield S8 0UJ, UK
                 </a>
             ),
-            note: "Easy parking available",
+            note: "Find us easily with free parking onsite",
         },
         {
             icon: <Clock className="h-5 w-5" style={{ color: brandOrange }} />,
             title: "Opening Hours",
             value: (
                 <>
-                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p>Saturday: 8:00 AM - 4:00 PM</p>
+                    <p>Monday - Friday: 8:00 AM - 5:30 PM</p>
+                    <p>Saturday: 8:00 AM - 1:00 PM</p>
                     <p>Sunday: Closed</p>
                 </>
             ),
@@ -109,7 +109,6 @@ export default function Contact() {
                                 Send Us a Message
                             </h3>
                             <form className="space-y-4">
-                                {/* Name Fields */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label htmlFor="firstName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
@@ -133,7 +132,6 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                {/* Email */}
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
                                         Email
@@ -146,7 +144,6 @@ export default function Contact() {
                                     />
                                 </div>
 
-                                {/* Phone */}
                                 <div>
                                     <label htmlFor="phone" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
                                         Phone Number
@@ -154,37 +151,34 @@ export default function Contact() {
                                     <input
                                         id="phone"
                                         type="tel"
-                                        placeholder="01234 567890"
+                                        placeholder="0114 258 7911"
                                         className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
                                     />
                                 </div>
 
-                                {/* Service Required */}
                                 <div>
                                     <label htmlFor="service" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
                                         Service Required
                                     </label>
                                     <input
                                         id="service"
-                                        placeholder="e.g., MOT, Car Service, Brake Repair"
+                                        placeholder="e.g., MOT, Diagnostics, Brake Repair"
                                         className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
                                     />
                                 </div>
 
-                                {/* Message */}
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
                                         Message
                                     </label>
                                     <textarea
                                         id="message"
-                                        rows="4"
+                                        rows={4}
                                         placeholder="Tell us about your vehicle and what service you need..."
                                         className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
                                     ></textarea>
                                 </div>
 
-                                {/* Submit */}
                                 <button
                                     type="submit"
                                     className="w-full py-2 px-4 rounded-md text-sm font-medium transition-colors"

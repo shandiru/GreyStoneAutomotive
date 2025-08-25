@@ -20,17 +20,29 @@ export default function Header() {
       <div className="text-white py-2" style={{ backgroundColor: brandOrange }}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
           <div className="flex items-center gap-4 mb-2 sm:mb-0">
+            {/* Phone */}
             <div className="flex items-center gap-1">
               <Phone className="h-4 w-4" />
-              <a href="tel:01234567890" className="hover:underline underline-offset-2">
-                01234 567890
+              <a href="tel:+447545213989" className="hover:underline underline-offset-2">
+                +44 7545 213989
               </a>
             </div>
+
+            {/* Location */}
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
-              <span>123 High Street, Anytown</span>
+              <a
+                href="https://www.google.com/maps?q=3,+Bryta+Works,+Little+London+Rd,+Woodseats,+Sheffield+S8+0UJ,+United+Kingdom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline underline-offset-2"
+              >
+                3 Bryta Works, Sheffield
+              </a>
             </div>
           </div>
+
+          {/* Hours */}
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4" />
             <span>Mon-Fri: 8AM–6PM | Sat: 8AM–4PM</span>
