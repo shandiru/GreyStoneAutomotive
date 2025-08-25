@@ -1,83 +1,93 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Great service - fitted me in ASAP for air con issue. This was a second opinion and they were so honest, explained everything well to me, and saved me a lot of money compared to another garage! Friendly, genuine, and helpful. Highly recommend. Lucky for me they are local!.",
-    name: "Charlotte Williams",
-    role: "Customer",
-    avatar: "/Charlotte.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "My clutch went on my car within a day my car was taken away and brought back with a new clutch the car has never drove as smooth. Great service and excellent communication at all times. Definitely recommend will be back for any future issues..",
-    name: "Izzy Smedley.",
-    role: "Customer",
-    avatar: "/Lzzy.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "Car needed a new clutch while on holiday from Scotland. Contacted and new clutch fitted the following day after breakdown recovery. Excellent service. Highly recommend.",
-    name: "Jed Craik.",
-    role: "Customer",
-    avatar: "/jed.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "Justin was recommended to me by the garage I usually use as he was busy. What a find on the back of little London Road Sheffield. I had my exhaust and clutch replaced. He gave me a quote and time scale for the work to be done by. Excellent service done when he said it would be and bonus it was cheaper than the original quote. Justin also recovered my car when it broke down without any extra charge. Very pleasant professional and approachable. Would highly recommend.",
-    name: "Trudy Noel.",
-    role: "Customer",
-    avatar: "/Trudy.png",
-    stars: 5,
-  },
-  {
-    quote: `Found Justin through a Google search for a clutch problem. After a quick assessment problem was identified and quickly sorted as well as replacing part of the exhaust which was blowing.
+export default function Testimonials({
+  brand = 'Greystone',
+  auto = true,
+  interval = 6000,
+}) {
+  // Brand palette (old code style)
+  const brandOrange = '#E1912F';
+  const brandBlack = '#000000';
+  const brandWhite = '#FFFFFF';
+
+  const TESTIMONIALS = [
+    {
+      quote:
+        "Great service - fitted me in ASAP for air con issue. This was a second opinion and they were so honest, explained everything well to me, and saved me a lot of money compared to another garage! Friendly, genuine, and helpful. Highly recommend. Lucky for me they are local!.",
+      name: 'Charlotte Williams',
+      role: 'Customer',
+      avatar: '/Charlotte.png',
+      stars: 5,
+    },
+    {
+      quote:
+        'My clutch went on my car within a day my car was taken away and brought back with a new clutch the car has never drove as smooth. Great service and excellent communication at all times. Definitely recommend will be back for any future issues..',
+      name: 'Izzy Smedley.',
+      role: 'Customer',
+      avatar: '/Lzzy.png',
+      stars: 5,
+    },
+    {
+      quote:
+        'Car needed a new clutch while on holiday from Scotland. Contacted and new clutch fitted the following day after breakdown recovery. Excellent service. Highly recommend.',
+      name: 'Jed Craik.',
+      role: 'Customer',
+      avatar: '/jed.png',
+      stars: 5,
+    },
+    {
+      quote:
+        'Justin was recommended to me by the garage I usually use as he was busy. What a find on the back of little London Road Sheffield. I had my exhaust and clutch replaced. He gave me a quote and time scale for the work to be done by. Excellent service done when he said it would be and bonus it was cheaper than the original quote. Justin also recovered my car when it broke down without any extra charge. Very pleasant professional and approachable. Would highly recommend.',
+      name: 'Trudy Noel.',
+      role: 'Customer',
+      avatar: '/Trudy.png',
+      stars: 5,
+    },
+    {
+      quote: `Found Justin through a Google search for a clutch problem. After a quick assessment problem was identified and quickly sorted as well as replacing part of the exhaust which was blowing.
 Friendly, great service, no fuss and good value, now I've discovered them and so close too I'll use them again and confident to recommend to others..`,
-    name: "zafar1084.",
-    role: "Customer",
-    avatar: "/Zafar.png",
-    stars: 5,
-  },
-  {
-    quote: `Had a new clutch fitted in my Kia.
+      name: 'zafar1084.',
+      role: 'Customer',
+      avatar: '/Zafar.png',
+      stars: 5,
+    },
+    {
+      quote: `Had a new clutch fitted in my Kia.
 The service I received was really good. Friendly, efficient and highly professional.
 My car now drives beautifully. I am a very happy customer and I would very highly recommend.
 Thank-you. 😊.`,
-    name: "S D Wilkinson.",
-    role: "Customer",
-    avatar: "/SD.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "My wife has used Justin for a while and always had great customer service. I have now used him for my annual service now that my car is out of its warranty. He did a great job and was very polite and helpful. He recently checked my wife’s car for what seemed to be a fault. He reset the cars computer and everything cleared - no charge. Brilliant customer service and help.",
-    name: "Brian Wallace.",
-    role: "Customer",
-    avatar: "/Brian.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "Justin and his team are absolutely amazing. I and my family have used this garage for over 5 years now (4 cars) and without doubt we have received the best service each time Justin makes sure everything is done to the highest standard. I would not dream of taking my car anywhere else now and cannot recommend highly enough.",
-    name: "Lisa Storey.",
-    role: "Customer",
-    avatar: "/Lisa.png",
-    stars: 5,
-  },
-  {
-    quote:
-      "Had my car recovered there after a breakdown. Great service and communication. Repair needed was done plus another couple of things I asked them to do while they had the car. Good turn round time to say it wasn't a pre booked job. Good value for money..",
-    name: "Nicola Walker.",
-    role: "Customer",
-    avatar: "/Nicola.png",
-    stars: 5,
-  },
-  {
-    quote: `You know when there’s something wrong with your car and you’re stuck.. Well these guys have literally saved me this week. My car needed it’s clutch replacing. After sending an enquiry through to their website they got back to me early the next working day, arranged for my car to be collected that morning and I had it delivered back mid afternoon the following day with all the works completed! The car feels amazing to drive now and I’m so impressed with their friendliness, professionalism and fast service.
+      name: 'S D Wilkinson.',
+      role: 'Customer',
+      avatar: '/SD.png',
+      stars: 5,
+    },
+    {
+      quote:
+        'My wife has used Justin for a while and always had great customer service. I have now used him for my annual service now that my car is out of its warranty. He did a great job and was very polite and helpful. He recently checked my wife’s car for what seemed to be a fault. He reset the cars computer and everything cleared - no charge. Brilliant customer service and help.',
+      name: 'Brian Wallace.',
+      role: 'Customer',
+      avatar: '/Brian.png',
+      stars: 5,
+    },
+    {
+      quote:
+        'Justin and his team are absolutely amazing. I and my family have used this garage for over 5 years now (4 cars) and without doubt we have received the best service each time Justin makes sure everything is done to the highest standard. I would not dream of taking my car anywhere else now and cannot recommend highly enough.',
+      name: 'Lisa Storey.',
+      role: 'Customer',
+      avatar: '/Lisa.png',
+      stars: 5,
+    },
+    {
+      quote:
+        "Had my car recovered there after a breakdown. Great service and communication. Repair needed was done plus another couple of things I asked them to do while they had the car. Good turn round time to say it wasn't a pre booked job. Good value for money..",
+      name: 'Nicola Walker.',
+      role: 'Customer',
+      avatar: '/Nicola.png',
+      stars: 5,
+    },
+    {
+      quote: `You know when there’s something wrong with your car and you’re stuck.. Well these guys have literally saved me this week. My car needed it’s clutch replacing. After sending an enquiry through to their website they got back to me early the next working day, arranged for my car to be collected that morning and I had it delivered back mid afternoon the following day with all the works completed! The car feels amazing to drive now and I’m so impressed with their friendliness, professionalism and fast service.
 I truly am so thankful. I absolutely recommend them 100% to anyone that needs the stress taking out of having your car repaired.
 Thank you for it all involved in this business, especially Justin who kept me up to date with everything. Totally deserve this 5 star review.
 Positive
@@ -85,32 +95,13 @@ Punctuality, Quality, Professionalism, Value
 
 Services
 General repairs & maintenance, Service not listed.`,
-    name: "clair scammell.",
-    role: "Customer",
-    avatar: "/clair.png",
-    stars: 5,
-  },
-];
+      name: 'clair scammell.',
+      role: 'Customer',
+      avatar: '/clair.png',
+      stars: 5,
+    },
+  ];
 
-const colors = {
-  orange: '#E1912F',
-  black: '#000000',
-  white: '#FFFFFF',
-};
-
-function Star({ filled = true }) {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      className={`h-4 w-4 ${filled ? 'fill-white' : 'fill-white/50'}`}
-      aria-hidden="true"
-    >
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.2 3.69a1 1 0 0 0 .95.69h3.879c.967 0 1.371 1.24.588 1.81l-3.138 2.279a1 1 0 0 0-.364 1.118l1.2 3.69c.3.921-.755 1.688-1.54 1.118L10.5 14.347a1 1 0 0 0-1.176 0l-3.246 2.975c-.785.57-1.84-.197-1.54-1.118l1.2-3.69a1 1 0 0 0-.364-1.118L2.236 9.117c-.783-.57-.379-1.81.588-1.81h3.88a1 1 0 0 0 .949-.69l1.396-3.69Z" />
-    </svg>
-  );
-}
-
-export default function Testimonials({ brand = 'Greystone', auto = true, interval = 6000 }) {
   const [index, setIndex] = useState(0);
   const total = TESTIMONIALS.length;
 
@@ -121,6 +112,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
     if (!auto) return;
     const id = setInterval(next, interval);
     return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auto, interval]);
 
   const t = TESTIMONIALS[index];
@@ -128,22 +120,26 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        {/* Heading (old style: serif + orange brand span) */}
         <h2
           className="text-center text-2xl font-extrabold tracking-[0.2em] sm:text-4xl uppercase mb-10"
-          style={{ color: colors.black, fontFamily: "'Times New Roman', serif" }}
+          style={{ color: brandBlack, fontFamily: "'Times New Roman', serif" }}
         >
           What Customers Say
           <br />
-          About <span style={{ color: colors.orange }}>{brand}</span>
+          About <span style={{ color: brandOrange }}>{brand}</span>
         </h2>
 
+        {/* Card */}
         <div
           className="relative mx-auto w-full max-w-4xl rounded-xl px-6 py-16 md:py-20 text-center text-white shadow-xl sm:px-10 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex items-center"
-          style={{ backgroundColor: colors.orange, fontFamily: "'Times New Roman', serif" }}
+          style={{ backgroundColor: brandOrange, fontFamily: "'Times New Roman', serif" }}
         >
           <p className="mx-auto max-w-3xl text-lg md:text-xl leading-relaxed text-white whitespace-pre-line">
             “{t.quote}”
           </p>
+
+          {/* Avatar bubble */}
           <div className="pointer-events-none absolute left-1/2 top-full -mt-12 md:-mt-14 -translate-x-1/2">
             <img
               src={t.avatar}
@@ -153,38 +149,56 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center" style={{ fontFamily: "'Times New Roman', serif" }}>
+        {/* Name / role / stars */}
+        <div
+          className="mt-14 flex flex-col items-center"
+          style={{ fontFamily: "'Times New Roman', serif" }}
+        >
           <div className="mb-3 flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} filled={i < t.stars} />
             ))}
           </div>
-          <div className="text-sm font-extrabold tracking-wider" style={{ color: colors.black }}>
+          <div
+            className="text-sm font-extrabold tracking-wider"
+            style={{ color: brandBlack }}
+          >
             {t.name}
           </div>
-          <div className="text-sm" style={{ color: colors.orange }}>
+          <div className="text-sm" style={{ color: brandOrange }}>
             {t.role}
           </div>
         </div>
 
+        {/* Dots */}
         <div className="mt-6 flex items-center justify-center gap-2">
           {TESTIMONIALS.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-2 w-2 rounded-full transition ${i === index ? 'bg-[#E1912F]' : 'bg-gray-300'}`}
+              className={`h-2 w-2 rounded-full transition ${
+                i === index ? 'bg-[#E1912F]' : 'bg-gray-300'
+              }`}
             />
           ))}
         </div>
 
         {/* CTA to Google Reviews */}
-        <div className="mt-10 text-center" style={{ fontFamily: "'Times New Roman', serif" }}>
+        <div
+          className="mt-10 text-center"
+          style={{ fontFamily: "'Times New Roman', serif" }}
+        >
           <a
             href="https://www.google.com/search?sca_esv=263d6f8b3f719809&hl=en&gl=uk&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s3MtuqoHNZdw0dP59d0Lu1QIqWhxuZBMzjfOdKXG2WbeRTNFFASIe5dLNFMgCUeriQRvAxxKtAh0qgq_dhk65B6ajTrorPvCfT-c-MPpA8kejCgCPhTKhdTPQuFKQQiG27-3Y9s%3D&q=Greystone+Automotive+Engineers+ltd+Reviews&sa=X&ved=2ahUKEwichJndjaaPAxXNyzgGHdzSGwsQ0bkNegQIHhAE"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#E1912F] hover:bg-black transition text-white font-semibold py-3 px-6 rounded-lg mt-4"
+            className="inline-block transition text-white font-semibold py-3 px-6 rounded-lg mt-4"
+            style={{
+              backgroundColor: brandOrange,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = brandBlack)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = brandOrange)}
           >
             ⭐ Leave Us a Review on Google
           </a>
@@ -226,4 +240,17 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
       </button>
     </section>
   );
+
+  // Star (old style: inline fill control)
+  function Star({ filled = true }) {
+    return (
+      <svg
+        viewBox="0 0 20 20"
+        className={`h-4 w-4 ${filled ? 'fill-white' : 'fill-white/50'}`}
+        aria-hidden="true"
+      >
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.2 3.69a1 1 0 0 0 .95.69h3.879c.967 0 1.371 1.24.588 1.81l-3.138 2.279a1 1 0 0 0-.364 1.118l1.2 3.69c.3.921-.755 1.688-1.54 1.118L10.5 14.347a1 1 0 0 0-1.176 0l-3.246 2.975c-.785.57-1.84-.197-1.54-1.118l1.2-3.69a1 1 0 0 0-.364-1.118L2.236 9.117c-.783-.57-.379-1.81.588-1.81h3.88a1 1 0 0 0 .949-.69l1.396-3.69Z" />
+      </svg>
+    );
+  }
 }

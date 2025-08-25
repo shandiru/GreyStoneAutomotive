@@ -20,7 +20,8 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
             Expert Automotive Services
-            <br className="hidden md:block" /> You Can Trust
+            <br className="hidden md:block" />{" "}
+            <span style={{ color: brandOrange }}>You Can Trust</span>
           </h2>
 
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">

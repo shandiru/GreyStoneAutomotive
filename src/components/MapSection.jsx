@@ -1,14 +1,17 @@
 import React from "react";
 
 export default function MapSection() {
+  const brandOrange = "#E1912F"; // Ochre Orange
+  const brandBlack = "#000000"; // Black
+
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100">
       <div className="max-w-6xl mx-auto text-center">
         <h2
           className="text-3xl sm:text-4xl font-bold mb-8"
-          style={{ fontFamily: "Georgia, serif", color: "#000000" }}
+          style={{ fontFamily: "Georgia, serif", color: brandBlack }}
         >
-          Visit Us at Greystone Automotive
+          Visit Us at <span style={{ color: brandOrange }}>Greystone Automotive</span>
         </h2>
 
         <div className="w-full h-[400px] rounded-xl overflow-hidden shadow-lg">

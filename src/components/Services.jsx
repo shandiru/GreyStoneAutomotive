@@ -76,8 +76,11 @@ export default function Services() {
       <div className="container mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold" style={{ color: brandBlack }}>
-            Our Professional Services
+          <h2
+            className="text-3xl md:text-4xl font-serif font-bold"
+            style={{ color: brandBlack }}
+          >
+            Our Professional <span style={{ color: brandOrange }}>Services</span>
           </h2>
           <p className="text-xl max-w-2xl mx-auto" style={{ color: "#4B5563" }}>
             From routine maintenance to complex repairs, we provide comprehensive automotive
@@ -99,13 +102,19 @@ export default function Services() {
                 >
                   {service.icon}
                 </div>
-                <div className="font-semibold font-serif text-lg" style={{ color: brandBlack }}>
+                <div
+                  className="font-semibold font-serif text-lg"
+                  style={{ color: brandBlack }}
+                >
                   {service.title}
                 </div>
               </div>
 
               <div className="px-6">
-                <div className="text-sm text-center mb-4" style={{ color: "#4B5563" }}>
+                <div
+                  className="text-sm text-center mb-4"
+                  style={{ color: "#4B5563" }}
+                >
                   {service.desc}
                 </div>
                 <ul className="space-y-2 text-sm" style={{ color: "#4B5563" }}>
