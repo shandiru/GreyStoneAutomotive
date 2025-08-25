@@ -181,7 +181,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
         {/* CTA to Google Reviews */}
         <div className="mt-10 text-center" style={{ fontFamily: "'Times New Roman', serif" }}>
           <a
-            href="https://www.google.com/search?q=Greystone+Automotive+Engineers+Ltd+Sheffield&hl=en&gl=uk#lrd=0x48798242aa57d70d:0x3f1d5e92d4d83e13,1,,,,"
+            href="https://www.google.com/search?sca_esv=263d6f8b3f719809&hl=en&gl=uk&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s3MtuqoHNZdw0dP59d0Lu1QIqWhxuZBMzjfOdKXG2WbeRTNFFASIe5dLNFMgCUeriQRvAxxKtAh0qgq_dhk65B6ajTrorPvCfT-c-MPpA8kejCgCPhTKhdTPQuFKQQiG27-3Y9s%3D&q=Greystone+Automotive+Engineers+ltd+Reviews&sa=X&ved=2ahUKEwichJndjaaPAxXNyzgGHdzSGwsQ0bkNegQIHhAE"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-[#E1912F] hover:bg-black transition text-white font-semibold py-3 px-6 rounded-lg mt-4"

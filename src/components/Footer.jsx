@@ -44,7 +44,7 @@ export default function Footer() {
                   href="mailto:info@greystoneautomotive.co.uk"
                   className="hover:underline underline-offset-4 text-white/90"
                 >
-                  info@greystoneautomotive.co.uk
+                  justin316@btinternet.com
                 </a>
               </div>
               <div className="flex items-center gap-2">

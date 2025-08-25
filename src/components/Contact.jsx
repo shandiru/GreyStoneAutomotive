@@ -24,7 +24,7 @@ export default function Contact() {
             title: "Email",
             value: (
                 <a href="mailto:info@greystoneautomotive.co.uk" className="hover:underline" style={{ color: brandOrange }}>
-                    info@greystoneautomotive.co.uk
+                    justin316@btinternet.com
                 </a>
             ),
             note: "Send us your questions anytime",
