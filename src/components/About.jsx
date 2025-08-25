@@ -4,7 +4,9 @@ import React from "react";
 import { Award, Users, Star } from "lucide-react";
 
 export default function About() {
-    const brandGreen = "#0B6B38";
+    const brandOrange = "#E1912F"; // Ochre Orange
+    const brandBlack = "#000000"; // Black
+    const brandWhite = "#FFFFFF"; // White
 
     const stats = [
         { value: "20+", label: "Years Experience" },
@@ -15,36 +17,33 @@ export default function About() {
 
     const features = [
         {
-            icon: <Award className="h-6 w-6" style={{ color: brandGreen }} />,
+            icon: <Award className="h-6 w-6" style={{ color: brandOrange }} />,
             title: "Certified Excellence",
-            desc:
-                "Our technicians are fully certified and continuously trained on the latest automotive technologies and repair techniques.",
+            desc: "Our technicians are fully certified and continuously trained on the latest automotive technologies and repair techniques.",
         },
         {
-            icon: <Users className="h-6 w-6" style={{ color: brandGreen }} />,
+            icon: <Users className="h-6 w-6" style={{ color: brandOrange }} />,
             title: "Customer First",
-            desc:
-                "We believe in transparent communication and honest pricing. No hidden fees, no unnecessary work - just quality service you can trust.",
+            desc: "We believe in transparent communication and honest pricing. No hidden fees, no unnecessary work - just quality service you can trust.",
         },
         {
-            icon: <Star className="h-6 w-6" style={{ color: brandGreen }} />,
+            icon: <Star className="h-6 w-6" style={{ color: brandOrange }} />,
             title: "Quality Guarantee",
-            desc:
-                "All our work comes with a comprehensive warranty, giving you peace of mind and confidence in our services.",
+            desc: "All our work comes with a comprehensive warranty, giving you peace of mind and confidence in our services.",
         },
     ];
 
     return (
-        <section id="about" className="py-20 bg-gray-100">
+        <section id="about" className="py-20" style={{ backgroundColor: "#F3F4F6" }}>
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
                     {/* Left column: Copy + Stats */}
                     <div className="mx-auto max-w-xl">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6" style={{ color: brandBlack }}>
                             Why Choose Grey Stone Automotive?
                         </h2>
 
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                        <p className="text-lg mb-6 leading-relaxed" style={{ color: "#4B5563" }}>
                             With over two decades of experience in the automotive industry,
                             Grey Stone Automotive has built a reputation for excellence,
                             reliability, and honest service. Our team of certified technicians
@@ -52,7 +51,7 @@ export default function About() {
                             your vehicle receives the best possible care.
                         </p>
 
-                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                        <p className="text-lg mb-8 leading-relaxed" style={{ color: "#4B5563" }}>
                             We understand that your vehicle is essential to your daily life,
                             which is why we're committed to providing fast, efficient service
                             without compromising on quality. From routine maintenance to
@@ -65,11 +64,13 @@ export default function About() {
                                 <div key={i} className="text-center">
                                     <div
                                         className="text-3xl font-serif font-bold mb-2"
-                                        style={{ color: brandGreen }}
+                                        style={{ color: brandOrange }}
                                     >
                                         {s.value}
                                     </div>
-                                    <div className="text-sm text-gray-600">{s.label}</div>
+                                    <div className="text-sm" style={{ color: brandBlack }}>
+                                        {s.label}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -80,21 +81,22 @@ export default function About() {
                         {features.map((f, i) => (
                             <div
                                 key={i}
-                                className="bg-white flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
+                                className="flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
+                                style={{ backgroundColor: brandWhite }}
                             >
                                 <div className="p-6">
                                     <div className="flex items-start space-x-4">
                                         <div
                                             className="p-3 rounded-full"
-                                            style={{ backgroundColor: `${brandGreen}1A` }}
+                                            style={{ backgroundColor: `${brandOrange}1A` }}
                                         >
                                             {f.icon}
                                         </div>
                                         <div>
-                                            <h3 className="font-serif font-semibold text-lg mb-2">
+                                            <h3 className="font-serif font-semibold text-lg mb-2" style={{ color: brandBlack }}>
                                                 {f.title}
                                             </h3>
-                                            <p className="text-gray-600">{f.desc}</p>
+                                            <p style={{ color: "#4B5563" }}>{f.desc}</p>
                                         </div>
                                     </div>
                                 </div>
