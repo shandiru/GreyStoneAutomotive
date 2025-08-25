@@ -4,7 +4,13 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 export default function Footer() {
   const ochreOrange = "#E1912F";
   const black = "#000000";
-  const white = "#FFFFFF";
+
+  // Keep one canonical address string and encode it exactly once.
+  const address =
+    "Greystone Automotive Engineers Ltd, 3 Bryta Works, Little London Rd, Woodseats, Sheffield S8 0UJ, UK";
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(address);
 
   return (
     <footer
@@ -50,12 +56,25 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-white" />
                 <a
-                  href="https://www.google.com/maps?q=Greystone+Automotive+Engineers+Ltd,+3+Bryta+Works,+Little+London+Rd,+Woodseats,+Sheffield+S8+0UJ,+United+Kingdom"
+                  href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline underline-offset-4 text-white/90"
+                  title="Open in Google Maps"
                 >
                   3, Bryta Works, Little London Rd, Woodseats, Sheffield S8 0UJ, UK
+                </a>
+              </div>
+
+              {/* Optional explicit Maps link (same target, clearer label) */}
+              <div>
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-1 text-xs text-white/80 hover:text-black transition-colors underline underline-offset-4"
+                >
+                  Open in Google Maps
                 </a>
               </div>
             </div>

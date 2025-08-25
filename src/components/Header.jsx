@@ -5,6 +5,13 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const brandOrange = "#E1912F";
 
+  // Canonical address + stable Maps URL
+  const address =
+    "Greystone Automotive Engineers Ltd, 3 Bryta Works, Little London Rd, Woodseats, Sheffield S8 0UJ, UK";
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(address);
+
   const goToContact = (e) => {
     e.preventDefault();
     const section = document.getElementById("contact");
@@ -15,7 +22,10 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200" style={{ "--brandColor": brandOrange }}>
+    <header
+      className="bg-white border-b border-gray-200"
+      style={{ "--brandColor": brandOrange }}
+    >
       {/* Top Info Bar */}
       <div className="text-white py-2" style={{ backgroundColor: brandOrange }}>
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
@@ -23,19 +33,23 @@ export default function Header() {
             {/* Phone */}
             <div className="flex items-center gap-1">
               <Phone className="h-4 w-4" />
-              <a href="tel:+447545213989" className="hover:underline underline-offset-2">
+              <a
+                href="tel:+447545213989"
+                className="hover:underline underline-offset-2"
+              >
                 +44 7545 213989
               </a>
             </div>
 
-            {/* Location */}
+            {/* Location (fixed URL) */}
             <div className="flex items-center gap-1">
               <MapPin className="h-4 w-4" />
               <a
-                href="https://www.google.com/maps?q=3,+Bryta+Works,+Little+London+Rd,+Woodseats,+Sheffield+S8+0UJ,+United+Kingdom"
+                href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline underline-offset-2"
+                title="Open in Google Maps"
               >
                 3 Bryta Works, Sheffield
               </a>
@@ -89,6 +103,7 @@ export default function Header() {
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2 rounded-md text-gray-900 hover:bg-gray-100"
+            aria-label="Toggle menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
