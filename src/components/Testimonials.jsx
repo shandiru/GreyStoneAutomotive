@@ -3,73 +3,91 @@ import { useEffect, useState } from 'react';
 
 const TESTIMONIALS = [
   {
-    quote: "Incredible service. Honest and friendly team. I’ve recommended Greystone to everyone I know.",
-    name: "ALEX T.",
-    role: "Builder",
-    avatar: "/images/avatars/alex.jpg",
+    quote:
+      "Great service - fitted me in ASAP for air con issue. This was a second opinion and they were so honest, explained everything well to me, and saved me a lot of money compared to another garage! Friendly, genuine, and helpful. Highly recommend. Lucky for me they are local!.",
+    name: "Charlotte Williams",
+    role: "Customer",
+    avatar: "/Charlotte.png",
     stars: 5,
   },
   {
-    quote: "Top-tier customer care. Explained everything clearly and got the job done on time.",
-    name: "JULIE W.",
-    role: "Consultant",
-    avatar: "/images/avatars/julie.jpg",
+    quote:
+      "My clutch went on my car within a day my car was taken away and brought back with a new clutch the car has never drove as smooth. Great service and excellent communication at all times. Definitely recommend will be back for any future issues..",
+    name: "Izzy Smedley.",
+    role: "Customer",
+    avatar: "/Lzzy.png",
     stars: 5,
   },
   {
-    quote: "They fixed a long-standing engine issue that no one else could. Can’t thank them enough.",
-    name: "MOHAMMED Z.",
-    role: "Fleet Owner",
-    avatar: "/images/avatars/mohammed.jpg",
+    quote:
+      "Car needed a new clutch while on holiday from Scotland. Contacted and new clutch fitted the following day after breakdown recovery. Excellent service. Highly recommend.",
+    name: "Jed Craik.",
+    role: "Customer",
+    avatar: "/jed.png",
     stars: 5,
   },
   {
-    quote: "Professional, well-priced and efficient. What more could you ask for?",
-    name: "CLAIRE R.",
-    role: "Photographer",
-    avatar: "/images/avatars/claire.jpg",
+    quote:
+      "Justin was recommended to me by the garage I usually use as he was busy. What a find on the back of little London Road Sheffield. I had my exhaust and clutch replaced. He gave me a quote and time scale for the work to be done by. Excellent service done when he said it would be and bonus it was cheaper than the original quote. Justin also recovered my car when it broke down without any extra charge. Very pleasant professional and approachable. Would highly recommend.",
+    name: "Trudy Noel.",
+    role: "Customer",
+    avatar: "/Trudy.png",
     stars: 5,
   },
   {
-    quote: "Genuine people who care about quality workmanship. Always my first choice for MOTs.",
-    name: "BEN S.",
-    role: "Delivery Driver",
-    avatar: "/images/avatars/ben.jpg",
+    quote: `Found Justin through a Google search for a clutch problem. After a quick assessment problem was identified and quickly sorted as well as replacing part of the exhaust which was blowing.
+Friendly, great service, no fuss and good value, now I've discovered them and so close too I'll use them again and confident to recommend to others..`,
+    name: "zafar1084.",
+    role: "Customer",
+    avatar: "/Zafar.png",
     stars: 5,
   },
   {
-    quote: "I brought in my BMW and left with a smile. No pushy upsells—just good work.",
-    name: "SOPHIE L.",
-    role: "Marketing Exec",
-    avatar: "/images/avatars/sophie.jpg",
+    quote: `Had a new clutch fitted in my Kia.
+The service I received was really good. Friendly, efficient and highly professional.
+My car now drives beautifully. I am a very happy customer and I would very highly recommend.
+Thank-you. 😊.`,
+    name: "S D Wilkinson.",
+    role: "Customer",
+    avatar: "/SD.png",
     stars: 5,
   },
   {
-    quote: "They stayed late to finish the job. I couldn’t believe that kind of service still exists.",
-    name: "PETER D.",
-    role: "Teacher",
-    avatar: "/images/avatars/peter.jpg",
+    quote:
+      "My wife has used Justin for a while and always had great customer service. I have now used him for my annual service now that my car is out of its warranty. He did a great job and was very polite and helpful. He recently checked my wife’s car for what seemed to be a fault. He reset the cars computer and everything cleared - no charge. Brilliant customer service and help.",
+    name: "Brian Wallace.",
+    role: "Customer",
+    avatar: "/Brian.png",
     stars: 5,
   },
   {
-    quote: "Greystone saved me from a breakdown before a big family trip. Absolute legends.",
-    name: "KATIE H.",
-    role: "Parent",
-    avatar: "/images/avatars/katie.jpg",
+    quote:
+      "Justin and his team are absolutely amazing. I and my family have used this garage for over 5 years now (4 cars) and without doubt we have received the best service each time Justin makes sure everything is done to the highest standard. I would not dream of taking my car anywhere else now and cannot recommend highly enough.",
+    name: "Lisa Storey.",
+    role: "Customer",
+    avatar: "/Lisa.png",
     stars: 5,
   },
   {
-    quote: "Quick, friendly, and thorough. Wouldn’t trust anyone else with my van.",
-    name: "LIAM F.",
-    role: "Tradie",
-    avatar: "/images/avatars/liam.jpg",
+    quote:
+      "Had my car recovered there after a breakdown. Great service and communication. Repair needed was done plus another couple of things I asked them to do while they had the car. Good turn round time to say it wasn't a pre booked job. Good value for money..",
+    name: "Nicola Walker.",
+    role: "Customer",
+    avatar: "/Nicola.png",
     stars: 5,
   },
   {
-    quote: "Booking was easy, the staff were professional, and the results exceeded expectations.",
-    name: "EMILY R.",
-    role: "Nurse",
-    avatar: "/images/avatars/emily.jpg",
+    quote: `You know when there’s something wrong with your car and you’re stuck.. Well these guys have literally saved me this week. My car needed it’s clutch replacing. After sending an enquiry through to their website they got back to me early the next working day, arranged for my car to be collected that morning and I had it delivered back mid afternoon the following day with all the works completed! The car feels amazing to drive now and I’m so impressed with their friendliness, professionalism and fast service.
+I truly am so thankful. I absolutely recommend them 100% to anyone that needs the stress taking out of having your car repaired.
+Thank you for it all involved in this business, especially Justin who kept me up to date with everything. Totally deserve this 5 star review.
+Positive
+Punctuality, Quality, Professionalism, Value
+
+Services
+General repairs & maintenance, Service not listed.`,
+    name: "clair scammell.",
+    role: "Customer",
+    avatar: "/clair.png",
     stars: 5,
   },
 ];
@@ -123,7 +141,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
           className="relative mx-auto w-full max-w-4xl rounded-xl px-6 py-16 md:py-20 text-center text-white shadow-xl sm:px-10 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex items-center"
           style={{ backgroundColor: colors.orange, fontFamily: "'Times New Roman', serif" }}
         >
-          <p className="mx-auto max-w-3xl text-lg md:text-xl leading-relaxed text-white">
+          <p className="mx-auto max-w-3xl text-lg md:text-xl leading-relaxed text-white whitespace-pre-line">
             “{t.quote}”
           </p>
           <div className="pointer-events-none absolute left-1/2 top-full -mt-12 md:-mt-14 -translate-x-1/2">
@@ -155,9 +173,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-2 w-2 rounded-full transition ${
-                i === index ? 'bg-[#E1912F]' : 'bg-gray-300'
-              }`}
+              className={`h-2 w-2 rounded-full transition ${i === index ? 'bg-[#E1912F]' : 'bg-gray-300'}`}
             />
           ))}
         </div>
