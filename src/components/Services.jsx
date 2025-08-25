@@ -72,7 +72,11 @@ export default function Services() {
   const showMore = () => setVisibleCount(services.length);
 
   return (
-    <section id="services" className="py-20" style={{ backgroundColor: brandWhite }}>
+    <section
+      id="services"
+      className="py-20"
+      style={{ backgroundColor: brandWhite }}
+    >
       <div className="container mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-16">
@@ -82,9 +86,12 @@ export default function Services() {
           >
             Our Professional <span style={{ color: brandOrange }}>Services</span>
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: "#4B5563" }}>
-            From routine maintenance to complex repairs, we provide comprehensive automotive
-            services to keep your vehicle safe and reliable.
+          <p
+            className="text-xl max-w-2xl mx-auto"
+            style={{ color: "#4B5563" }}
+          >
+            From routine maintenance to complex repairs, we provide comprehensive
+            automotive services to keep your vehicle safe and reliable.
           </p>
         </div>
 
@@ -93,7 +100,14 @@ export default function Services() {
           {services.slice(0, visibleCount).map((service, index) => (
             <div
               key={index}
-              className="flex flex-col gap-6 rounded-xl border py-6 shadow-sm hover:shadow-lg transition-shadow duration-300 bg-white"
+              className="
+                flex flex-col gap-6 rounded-xl border-2 py-6 bg-white
+                transition-all duration-300
+                border-[#E1912F]
+                shadow-sm
+                hover:shadow-[0_0_20px_4px_rgba(225,145,47,0.5)]
+                hover:scale-[1.02]
+              "
             >
               <div className="px-6 text-center">
                 <div
@@ -143,6 +157,12 @@ export default function Services() {
               style={{
                 backgroundColor: brandOrange,
                 color: brandWhite,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = brandBlack;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = brandOrange;
               }}
             >
               View All Services

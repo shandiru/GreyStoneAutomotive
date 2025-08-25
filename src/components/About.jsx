@@ -44,7 +44,7 @@ export default function About() {
               style={{ color: brandBlack }}
             >
               Why Choose{" "}
-              <span style={{ color: brandOrange }}>Grey Stone Automotive ?</span>
+              <span style={{ color: brandOrange }}>Grey Stone Automotive?</span>
             </h2>
 
             <p
@@ -91,8 +91,13 @@ export default function About() {
             {features.map((f, i) => (
               <div
                 key={i}
-                className="flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
-                style={{ backgroundColor: brandWhite }}
+                className="
+                  flex flex-col gap-6 rounded-xl border-2 py-6 shadow-sm
+                  transition-all duration-300 bg-white
+                  border-[#E1912F]
+                  hover:shadow-[0_0_20px_4px_rgba(225,145,47,0.5)]
+                  hover:scale-[1.02]
+                "
               >
                 <div className="p-6">
                   <div className="flex items-start space-x-4">
