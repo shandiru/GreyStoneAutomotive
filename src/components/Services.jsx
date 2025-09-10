@@ -106,7 +106,7 @@ export default function Services() {
   }, [visibleCount]);
 
   return (
-    <section id="services" className="py-20" style={{ backgroundColor: brandWhite }}>
+    <section id="services" className="py-20 px-5 md:px-20" style={{ backgroundColor: brandWhite }}>
       <div className="container mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-16">
