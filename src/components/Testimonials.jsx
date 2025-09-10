@@ -1,17 +1,13 @@
 'use client';
-import { useEffect, useState } from 'react';
 
-export default function Testimonials({
-  brand = 'Greystone',
-  auto = true,
-  interval = 6000,
-}) {
-  // Brand palette (old code style)
-  const brandOrange = '#E1912F';
-  const brandBlack = '#000000';
-  const brandWhite = '#FFFFFF';
+import { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-  const TESTIMONIALS = [
+gsap.registerPlugin(ScrollTrigger);
+
+
+ const TESTIMONIALS = [
     {
       quote:
         "Great service - fitted me in ASAP for air con issue. This was a second opinion and they were so honest, explained everything well to me, and saved me a lot of money compared to another garage! Friendly, genuine, and helpful. Highly recommend. Lucky for me they are local!.",
@@ -102,8 +98,18 @@ General repairs & maintenance, Service not listed.`,
     },
   ];
 
+export default function Testimonials({ brand = 'Greystone', auto = true, interval = 6000 }) {
+  const brandOrange = '#E1912F';
+  const brandBlack = '#000000';
+  const brandWhite = '#FFFFFF';
+
   const [index, setIndex] = useState(0);
   const total = TESTIMONIALS.length;
+  const t = TESTIMONIALS[index];
+
+  const headingRef = useRef(null);
+  const cardRef = useRef(null);
+  const infoRef = useRef(null);
 
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
@@ -112,16 +118,60 @@ General repairs & maintenance, Service not listed.`,
     if (!auto) return;
     const id = setInterval(next, interval);
     return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auto, interval]);
 
-  const t = TESTIMONIALS[index];
+  // GSAP animation
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: 'top 85%',
+        },
+      }
+    );
+
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: 'top 85%',
+        },
+      }
+    );
+
+    gsap.fromTo(
+      infoRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: infoRef.current,
+          start: 'top 85%',
+        },
+      }
+    );
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Heading (old style: serif + orange brand span) */}
+        {/* Heading */}
         <h2
+          ref={headingRef}
           className="text-center text-2xl font-extrabold tracking-[0.2em] sm:text-4xl uppercase mb-10"
           style={{ color: brandBlack, fontFamily: "'Times New Roman', serif" }}
         >
@@ -132,14 +182,13 @@ General repairs & maintenance, Service not listed.`,
 
         {/* Card */}
         <div
+          ref={cardRef}
           className="relative mx-auto w-full max-w-4xl rounded-xl px-6 py-16 md:py-20 text-center text-white shadow-xl sm:px-10 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex items-center"
           style={{ backgroundColor: brandOrange, fontFamily: "'Times New Roman', serif" }}
         >
           <p className="mx-auto max-w-3xl text-lg md:text-xl leading-relaxed text-white whitespace-pre-line">
             “{t.quote}”
           </p>
-
-          {/* Avatar bubble */}
           <div className="pointer-events-none absolute left-1/2 top-full -mt-12 md:-mt-14 -translate-x-1/2">
             <img
               src={t.avatar}
@@ -149,8 +198,9 @@ General repairs & maintenance, Service not listed.`,
           </div>
         </div>
 
-        {/* Name / role / stars */}
+        {/* Info */}
         <div
+          ref={infoRef}
           className="mt-14 flex flex-col items-center"
           style={{ fontFamily: "'Times New Roman', serif" }}
         >
@@ -159,10 +209,7 @@ General repairs & maintenance, Service not listed.`,
               <Star key={i} filled={i < t.stars} />
             ))}
           </div>
-          <div
-            className="text-sm font-extrabold tracking-wider"
-            style={{ color: brandBlack }}
-          >
+          <div className="text-sm font-extrabold tracking-wider" style={{ color: brandBlack }}>
             {t.name}
           </div>
           <div className="text-sm" style={{ color: brandOrange }}>
@@ -184,11 +231,8 @@ General repairs & maintenance, Service not listed.`,
           ))}
         </div>
 
-        {/* CTA to Google Reviews */}
-        <div
-          className="mt-10 text-center"
-          style={{ fontFamily: "'Times New Roman', serif" }}
-        >
+        {/* CTA Button */}
+        <div className="mt-10 text-center" style={{ fontFamily: "'Times New Roman', serif" }}>
           <a
             href="https://www.google.com/search?sca_esv=263d6f8b3f719809&hl=en&gl=uk&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s3MtuqoHNZdw0dP59d0Lu1QIqWhxuZBMzjfOdKXG2WbeRTNFFASIe5dLNFMgCUeriQRvAxxKtAh0qgq_dhk65B6ajTrorPvCfT-c-MPpA8kejCgCPhTKhdTPQuFKQQiG27-3Y9s%3D&q=Greystone+Automotive+Engineers+ltd+Reviews&sa=X&ved=2ahUKEwichJndjaaPAxXNyzgGHdzSGwsQ0bkNegQIHhAE"
             target="_blank"
@@ -241,7 +285,7 @@ General repairs & maintenance, Service not listed.`,
     </section>
   );
 
-  // Star (old style: inline fill control)
+  // Star Component
   function Star({ filled = true }) {
     return (
       <svg
@@ -254,3 +298,15 @@ General repairs & maintenance, Service not listed.`,
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
