@@ -78,8 +78,8 @@ export default function Contact() {
       icon: <Mail className="h-5 w-5" style={{ color: brandOrange }} />,
       title: 'Email',
       value: (
-        <a href="mailto:info@greystoneautomotive.co.uk" className="hover:underline" style={{ color: brandOrange }}>
-          justin316@btinternet.com
+        <a href="mailto:justin.day@live.co.uk" className="hover:underline" style={{ color: brandOrange }}>
+         justin.day@live.co.uk
         </a>
       ),
       note: 'Send us your questions anytime',

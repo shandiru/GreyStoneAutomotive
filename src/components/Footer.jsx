@@ -94,8 +94,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-white" />
-                <a href="mailto:info@greystoneautomotive.co.uk" className="hover:underline underline-offset-4 text-white/90">
-                  justin316@btinternet.com
+                <a href="mailto:justin.day@live.co.uk" className="hover:underline underline-offset-4 text-white/90">
+                  justin.day@live.co.uk
                 </a>
               </div>
               <div className="flex items-center gap-2">
