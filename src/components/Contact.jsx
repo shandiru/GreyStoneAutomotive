@@ -1,66 +1,22 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const brandOrange = '#E1912F';
   const brandBlack = '#000000';
   const brandWhite = '#FFFFFF';
 
-  const headingRef = useRef(null);
-  const infoRef = useRef(null);
-  const formRef = useRef(null);
-
   useEffect(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: 'top 90%',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      infoRef.current,
-      { opacity: 0, x: -50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: infoRef.current,
-          start: 'top 90%',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      formRef.current,
-      { opacity: 0, x: 50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: 'top 90%',
-        },
-      }
-    );
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: false,
+      mirror: true, // animate on scroll up & down
+    });
   }, []);
 
   const contactInfo = [
@@ -79,7 +35,7 @@ export default function Contact() {
       title: 'Email',
       value: (
         <a href="mailto:justin.day@live.co.uk" className="hover:underline" style={{ color: brandOrange }}>
-         justin.day@live.co.uk
+          justin.day@live.co.uk
         </a>
       ),
       note: 'Send us your questions anytime',
@@ -118,7 +74,7 @@ export default function Contact() {
     <section id="contact" className="py-20" style={{ backgroundColor: brandWhite }}>
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Heading */}
-        <div ref={headingRef} className="text-center mb-12">
+        <div data-aos="fade-up" className="text-center mb-12">
           <h2
             className="text-3xl md:text-4xl font-serif font-bold mb-4"
             style={{ color: brandBlack }}
@@ -133,7 +89,7 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left - Contact Info */}
-          <div ref={infoRef} className="space-y-8">
+          <div data-aos="fade-right" className="space-y-8">
             <h3 className="text-2xl font-serif font-semibold mb-4" style={{ color: brandBlack }}>
               Contact Information
             </h3>
@@ -157,94 +113,92 @@ export default function Contact() {
 
           {/* Right - Contact Form */}
           <div
-            ref={formRef}
-            className="flex flex-col gap-6 rounded-xl border py-6 shadow-sm max-w-lg mx-auto w-full"
+            data-aos="fade-left"
+            className="flex flex-col gap-6 rounded-xl shadow-md max-w-lg mx-auto w-full p-6"
             style={{ backgroundColor: brandWhite }}
           >
-            <div className="px-6">
-              <h3 className="leading-none font-semibold font-serif text-lg mb-4" style={{ color: brandBlack }}>
-                Send Us a Message
-              </h3>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                      First Name
-                    </label>
-                    <input
-                      id="firstName"
-                      placeholder="John"
-                      className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                      Last Name
-                    </label>
-                    <input
-                      id="lastName"
-                      placeholder="Doe"
-                      className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
-                    />
-                  </div>
-                </div>
-
+            <h3 className="leading-none font-semibold font-serif text-lg mb-4" style={{ color: brandBlack }}>
+              Send Us a Message
+            </h3>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                    Email
+                  <label htmlFor="firstName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                    First Name
                   </label>
                   <input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
+                    id="firstName"
+                    placeholder="John"
+                    className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                    Phone Number
+                  <label htmlFor="lastName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                    Last Name
                   </label>
                   <input
-                    id="phone"
-                    type="tel"
-                    placeholder="0114 258 7911"
-                    className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
+                    id="lastName"
+                    placeholder="Doe"
+                    className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                    Service Required
-                  </label>
-                  <input
-                    id="service"
-                    placeholder="e.g., MOT, Diagnostics, Brake Repair"
-                    className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
-                  />
-                </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                />
+              </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    placeholder="Tell us about your vehicle and what service you need..."
-                    className="border border-gray-300 rounded-md w-full px-3 py-2 text-sm focus:border-orange-600 focus:ring-2 focus:ring-orange-200 outline-none"
-                  ></textarea>
-                </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                  Phone Number
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  placeholder="0114 258 7911"
+                  className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-2 px-4 rounded-md text-sm font-medium transition-colors"
-                  style={{ backgroundColor: brandOrange, color: brandWhite }}
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
+              <div>
+                <label htmlFor="service" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                  Service Required
+                </label>
+                <input
+                  id="service"
+                  placeholder="e.g., MOT, Diagnostics, Brake Repair"
+                  className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  placeholder="Tell us about your vehicle and what service you need..."
+                  className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2 px-4 rounded-md text-sm font-medium transition-colors shadow-sm"
+                style={{ backgroundColor: brandOrange, color: brandWhite }}
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </div>

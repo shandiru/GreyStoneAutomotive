@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
 import { Award, Users, Star } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function About() {
   const brandOrange = "#E1912F";
@@ -37,54 +35,12 @@ export default function About() {
     },
   ];
 
-  const leftRef = useRef(null);
-  const featureRefs = useRef([]);
-  featureRefs.current = [];
-
-  const addToFeatureRefs = (el) => {
-    if (el && !featureRefs.current.includes(el)) {
-      featureRefs.current.push(el);
-    }
-  };
-
   useEffect(() => {
-    // Animate left column
-    if (leftRef.current) {
-      gsap.fromTo(
-        leftRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: leftRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-
-    // Animate each feature card
-    featureRefs.current.forEach((el, i) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: i * 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: false,
+      mirror: true, // animate both scroll up & down
     });
   }, []);
 
@@ -93,7 +49,10 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left column: Copy + Stats */}
-          <div className="mx-auto max-w-xl" ref={leftRef}>
+          <div
+            className="mx-auto max-w-xl"
+            data-aos="fade-up"
+          >
             <h2
               className="text-3xl md:text-4xl font-serif font-bold mb-6"
               style={{ color: brandBlack }}
@@ -101,7 +60,12 @@ export default function About() {
               Why Choose <span style={{ color: brandOrange }}>Grey Stone Automotive?</span>
             </h2>
 
-            <p className="text-lg mb-6 leading-relaxed" style={{ color: "#4B5563" }}>
+            <p
+              className="text-lg mb-6 leading-relaxed"
+              style={{ color: "#4B5563" }}
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               With over two decades of experience in the automotive industry,
               Grey Stone Automotive has built a reputation for excellence,
               reliability, and honest service. Our team of certified technicians
@@ -109,7 +73,12 @@ export default function About() {
               your vehicle receives the best possible care.
             </p>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: "#4B5563" }}>
+            <p
+              className="text-lg mb-8 leading-relaxed"
+              style={{ color: "#4B5563" }}
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               We understand that your vehicle is essential to your daily life,
               which is why we're committed to providing fast, efficient service
               without compromising on quality. From routine maintenance to
@@ -117,7 +86,7 @@ export default function About() {
               care and attention to detail.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="600">
               {stats.map((s, i) => (
                 <div key={i} className="text-center">
                   <div className="text-3xl font-serif font-bold mb-2" style={{ color: brandOrange }}>
@@ -136,20 +105,26 @@ export default function About() {
             {features.map((f, i) => (
               <div
                 key={i}
-                ref={addToFeatureRefs}
-                className="flex flex-col gap-6 rounded-xl border-2 py-6 shadow-sm transition-all duration-300 bg-white border-[#E1912F] hover:shadow-[0_0_20px_4px_rgba(225,145,47,0.5)] hover:scale-[1.02]"
+                data-aos="fade-up"
+                data-aos-delay={i * 150}
+                className="flex flex-col gap-6 rounded-xl py-6 px-6 bg-white 
+                           border border-gray-200 shadow-md
+                           transition-all duration-300 ease-out
+                           hover:scale-[1.03] md:hover:shadow-[0_8px_24px_rgba(225,145,47,0.6)]
+                           active:scale-[0.98] active:shadow-[0_6px_16px_rgba(225,145,47,0.7)]"
               >
-                <div className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 rounded-full" style={{ backgroundColor: `${brandOrange}1A` }}>
-                      {f.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-semibold text-lg mb-2" style={{ color: brandBlack }}>
-                        {f.title}
-                      </h3>
-                      <p style={{ color: "#4B5563" }}>{f.desc}</p>
-                    </div>
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 rounded-full" style={{ backgroundColor: `${brandOrange}1A` }}>
+                    {f.icon}
+                  </div>
+                  <div>
+                    <h3
+                      className="font-serif font-semibold text-lg mb-2"
+                      style={{ color: brandBlack }}
+                    >
+                      {f.title}
+                    </h3>
+                    <p style={{ color: "#4B5563" }}>{f.desc}</p>
                   </div>
                 </div>
               </div>

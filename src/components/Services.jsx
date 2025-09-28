@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useState } from "react";
 import {
   Car,
   Cog,
@@ -13,22 +11,13 @@ import {
   Search,
   Gauge,
 } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Services() {
   const brandOrange = "#E1912F";
   const brandBlack = "#000000";
   const brandWhite = "#FFFFFF";
-
-  const cardRefs = useRef([]);
-  cardRefs.current = [];
-
-  const addToRefs = (el) => {
-    if (el && !cardRefs.current.includes(el)) {
-      cardRefs.current.push(el);
-    }
-  };
 
   const services = [
     {
@@ -85,35 +74,36 @@ export default function Services() {
   const showMore = () => setVisibleCount(services.length);
 
   useEffect(() => {
-    cardRefs.current.forEach((card, i) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          delay: i * 0.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: false,
+      mirror: true,
     });
-  }, [visibleCount]);
+  }, []);
 
   return (
-    <section id="services" className="py-20 px-5 md:px-20" style={{ backgroundColor: brandWhite }}>
+    <section
+      id="services"
+      className="py-20 px-5 md:px-20"
+      style={{ backgroundColor: brandWhite }}
+    >
       <div className="container mx-auto px-4">
         {/* Section Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold" style={{ color: brandBlack }}>
+          <h2
+            className="text-3xl md:text-4xl font-serif font-bold"
+            style={{ color: brandBlack }}
+            data-aos="fade-up"
+          >
             Our Professional <span style={{ color: brandOrange }}>Services</span>
           </h2>
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: "#4B5563" }}>
+          <p
+            className="text-xl max-w-2xl mx-auto"
+            style={{ color: "#4B5563" }}
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             From routine maintenance to complex repairs, we provide comprehensive
             automotive services to keep your vehicle safe and reliable.
           </p>
@@ -124,25 +114,42 @@ export default function Services() {
           {services.slice(0, visibleCount).map((service, index) => (
             <div
               key={index}
-              ref={addToRefs}
-              className="flex flex-col gap-6 rounded-xl border-2 py-6 bg-white transition-all duration-300 border-[#E1912F] shadow-sm hover:shadow-[0_0_20px_4px_rgba(225,145,47,0.5)] hover:scale-[1.02]"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              className="flex flex-col gap-6 rounded-xl py-6 px-6 bg-white 
+                         border border-gray-200 shadow-md
+                         transition-all duration-300 ease-out
+                         hover:scale-[1.03] md:hover:shadow-[0_8px_24px_rgba(225,145,47,0.6)]
+                         active:scale-[0.98] active:shadow-[0_6px_16px_rgba(225,145,47,0.7)]"
             >
-              <div className="px-6 text-center">
-                <div className="p-3 rounded-full w-fit mx-auto mb-4" style={{ backgroundColor: `${brandOrange}1A` }}>
+              <div className="text-center">
+                <div
+                  className="p-3 rounded-full w-fit mx-auto mb-4"
+                  style={{ backgroundColor: `${brandOrange}1A` }}
+                >
                   {service.icon}
                 </div>
-                <div className="font-semibold font-serif text-lg" style={{ color: brandBlack }}>
+                <div
+                  className="font-semibold font-serif text-lg"
+                  style={{ color: brandBlack }}
+                >
                   {service.title}
                 </div>
               </div>
-              <div className="px-6">
-                <div className="text-sm text-center mb-4" style={{ color: "#4B5563" }}>
+              <div>
+                <div
+                  className="text-sm text-center mb-4"
+                  style={{ color: "#4B5563" }}
+                >
                   {service.desc}
                 </div>
                 <ul className="space-y-2 text-sm" style={{ color: "#4B5563" }}>
                   {service.items.map((item, i) => (
                     <li key={i} className="flex items-center">
-                      <div className="w-1.5 h-1.5 rounded-full mr-2" style={{ backgroundColor: brandOrange }}></div>
+                      <div
+                        className="w-1.5 h-1.5 rounded-full mr-2"
+                        style={{ backgroundColor: brandOrange }}
+                      ></div>
                       {item}
                     </li>
                   ))}
@@ -158,7 +165,7 @@ export default function Services() {
             <button
               type="button"
               onClick={showMore}
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium h-10 rounded-md px-6 transition-colors"
+              className="inline-flex items-center justify-center gap-2 text-sm font-medium h-10 rounded-md px-6 transition-all duration-300 ease-out"
               style={{
                 backgroundColor: brandOrange,
                 color: brandWhite,

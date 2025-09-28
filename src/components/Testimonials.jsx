@@ -1,10 +1,9 @@
+
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
  const TESTIMONIALS = [
@@ -101,15 +100,10 @@ General repairs & maintenance, Service not listed.`,
 export default function Testimonials({ brand = 'Greystone', auto = true, interval = 6000 }) {
   const brandOrange = '#E1912F';
   const brandBlack = '#000000';
-  const brandWhite = '#FFFFFF';
 
   const [index, setIndex] = useState(0);
   const total = TESTIMONIALS.length;
   const t = TESTIMONIALS[index];
-
-  const headingRef = useRef(null);
-  const cardRef = useRef(null);
-  const infoRef = useRef(null);
 
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
@@ -120,50 +114,14 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
     return () => clearInterval(id);
   }, [auto, interval]);
 
-  // GSAP animation
+  // ✅ Initialize AOS
   useEffect(() => {
-    gsap.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: 'top 85%',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      cardRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top 85%',
-        },
-      }
-    );
-
-    gsap.fromTo(
-      infoRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: infoRef.current,
-          start: 'top 85%',
-        },
-      }
-    );
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: false,
+      mirror: true, // animate both scroll down & up
+    });
   }, []);
 
   return (
@@ -171,9 +129,9 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         {/* Heading */}
         <h2
-          ref={headingRef}
+          data-aos="fade-up"
           className="text-center text-2xl font-extrabold tracking-[0.2em] sm:text-4xl uppercase mb-10"
-          style={{ color: brandBlack, fontFamily: "'Times New Roman', serif" }}
+          style={{ color: brandBlack, fontFamily: "Georgia, serif" }}
         >
           What Customers Say
           <br />
@@ -182,7 +140,8 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
 
         {/* Card */}
         <div
-          ref={cardRef}
+          data-aos="fade-up"
+          data-aos-delay="200"
           className="relative mx-auto w-full max-w-4xl rounded-xl px-6 py-16 md:py-20 text-center text-white shadow-xl sm:px-10 min-h-[280px] sm:min-h-[320px] md:min-h-[360px] flex items-center"
           style={{ backgroundColor: brandOrange, fontFamily: "'Times New Roman', serif" }}
         >
@@ -200,7 +159,8 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
 
         {/* Info */}
         <div
-          ref={infoRef}
+          data-aos="fade-up"
+          data-aos-delay="400"
           className="mt-14 flex flex-col items-center"
           style={{ fontFamily: "'Times New Roman', serif" }}
         >
@@ -234,7 +194,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
         {/* CTA Button */}
         <div className="mt-10 text-center" style={{ fontFamily: "'Times New Roman', serif" }}>
           <a
-            href="https://www.google.com/search?sca_esv=263d6f8b3f719809&hl=en&gl=uk&si=AMgyJEuzsz2NflaaWzrzdpjxXXRaJ2hfdMsbe_mSWso6src8s3MtuqoHNZdw0dP59d0Lu1QIqWhxuZBMzjfOdKXG2WbeRTNFFASIe5dLNFMgCUeriQRvAxxKtAh0qgq_dhk65B6ajTrorPvCfT-c-MPpA8kejCgCPhTKhdTPQuFKQQiG27-3Y9s%3D&q=Greystone+Automotive+Engineers+ltd+Reviews&sa=X&ved=2ahUKEwichJndjaaPAxXNyzgGHdzSGwsQ0bkNegQIHhAE"
+            href="https://www.google.com/search?q=Greystone+Automotive+Engineers+ltd+Reviews"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block transition text-white font-semibold py-3 px-6 rounded-lg mt-4"
@@ -285,7 +245,7 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
     </section>
   );
 
-  // Star Component
+  // ⭐ Star Component
   function Star({ filled = true }) {
     return (
       <svg
@@ -298,15 +258,4 @@ export default function Testimonials({ brand = 'Greystone', auto = true, interva
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
