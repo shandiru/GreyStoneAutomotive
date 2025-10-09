@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import emailjs from 'emailjs-com';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Contact() {
@@ -10,12 +11,16 @@ export default function Contact() {
   const brandBlack = '#000000';
   const brandWhite = '#FFFFFF';
 
+  const formRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
+
   useEffect(() => {
     AOS.init({
       duration: 800,
       easing: 'ease-out-cubic',
       once: false,
-      mirror: true, // animate on scroll up & down
+      mirror: true,
     });
   }, []);
 
@@ -34,8 +39,8 @@ export default function Contact() {
       icon: <Mail className="h-5 w-5" style={{ color: brandOrange }} />,
       title: 'Email',
       value: (
-        <a href="mailto:justin.day@live.co.uk" className="hover:underline" style={{ color: brandOrange }}>
-          justin.day@live.co.uk
+        <a href="mailto:justin316@btinternet.com" className="hover:underline" style={{ color: brandOrange }}>
+          justin316@btinternet.com
         </a>
       ),
       note: 'Send us your questions anytime',
@@ -66,9 +71,36 @@ export default function Contact() {
           <p>Sunday: Closed</p>
         </>
       ),
-      note: '',
     },
   ];
+
+  // 🔹 EmailJS handler
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(null);
+
+    emailjs
+      .sendForm(
+        'service_404lxe7',     // <-- replace with your EmailJS service ID
+        'template_bhx7ho8',    // <-- replace with your EmailJS template ID
+        formRef.current,
+        'tmUgtXKf_TwGrV1iE'      // <-- replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully:', result.text);
+          setSuccess(true);
+          setLoading(false);
+          e.target.reset();
+        },
+        (error) => {
+          console.error('Email sending failed:', error.text);
+          setSuccess(false);
+          setLoading(false);
+        }
+      );
+  };
 
   return (
     <section id="contact" className="py-20" style={{ backgroundColor: brandWhite }}>
@@ -120,7 +152,7 @@ export default function Contact() {
             <h3 className="leading-none font-semibold font-serif text-lg mb-4" style={{ color: brandBlack }}>
               Send Us a Message
             </h3>
-            <form className="space-y-4">
+            <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium mb-2" style={{ color: brandBlack }}>
@@ -128,7 +160,9 @@ export default function Contact() {
                   </label>
                   <input
                     id="firstName"
+                    name="firstName"
                     placeholder="John"
+                    required
                     className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                   />
                 </div>
@@ -138,7 +172,9 @@ export default function Contact() {
                   </label>
                   <input
                     id="lastName"
+                    name="lastName"
                     placeholder="Doe"
+                    required
                     className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                   />
                 </div>
@@ -150,8 +186,10 @@ export default function Contact() {
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="john@example.com"
+                  required
                   className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                 />
               </div>
@@ -162,6 +200,7 @@ export default function Contact() {
                 </label>
                 <input
                   id="phone"
+                  name="phone"
                   type="tel"
                   placeholder="0114 258 7911"
                   className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
@@ -174,6 +213,7 @@ export default function Contact() {
                 </label>
                 <input
                   id="service"
+                  name="service"
                   placeholder="e.g., MOT, Diagnostics, Brake Repair"
                   className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                 />
@@ -185,19 +225,29 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
                   placeholder="Tell us about your vehicle and what service you need..."
+                  required
                   className="border border-gray-200 rounded-md w-full px-3 py-2 text-sm shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2 px-4 rounded-md text-sm font-medium transition-colors shadow-sm"
+                disabled={loading}
+                className="w-full py-2 px-4 rounded-md text-sm font-medium transition-colors shadow-sm hover:opacity-90"
                 style={{ backgroundColor: brandOrange, color: brandWhite }}
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
+
+              {success === true && (
+                <p className="text-green-600 text-sm mt-2 text-center">✅ Message sent successfully!</p>
+              )}
+              {success === false && (
+                <p className="text-red-600 text-sm mt-2 text-center">❌ Failed to send message. Try again.</p>
+              )}
             </form>
           </div>
         </div>
