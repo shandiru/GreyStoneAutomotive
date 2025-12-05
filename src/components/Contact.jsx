@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import emailjs from 'emailjs-com';
+import emailjs from "@emailjs/browser";
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function Contact() {
@@ -248,6 +248,7 @@ export default function Contact() {
               {success === false && (
                 <p className="text-red-600 text-sm mt-2 text-center">❌ Failed to send message. Try again.</p>
               )}
+                <p className="text-xs text-center dark:text-gray-300">By submitting this form, you agree to us processing your details to respond to your enquiry. Your information is handled securely and in line with our Privacy Policy.</p>
             </form>
           </div>
         </div>
